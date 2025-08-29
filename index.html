@@ -8,8 +8,10 @@
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
+            --accent-color: #27ae60;
             --text-color: #333;
             --background-color: #f9f9f9;
+            --border-color: #e0e0e0;
         }
         
         * {
@@ -32,16 +34,17 @@
         }
         
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0;
             margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .profile {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 3rem;
             flex-wrap: wrap;
         }
         
@@ -50,41 +53,87 @@
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
         .profile-info h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
         
         .profile-info p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 0.3rem;
         }
         
         section {
             margin-bottom: 3rem;
             background: white;
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
         
         h2 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            font-size: 1.8rem;
+        }
+        
+        #about p {
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
         
         .publication {
             margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+            transition: background 0.3s ease;
         }
         
-        .publication:last-child {
-            border-bottom: none;
+        .publication:hover {
+            background: #f0f2f5;
+        }
+        
+        .publication p {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        .publication a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .publication a:hover {
+            text-decoration: underline;
+        }
+        
+        .author-highlight {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .equal-contribution {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
         }
         
         ul {
@@ -93,7 +142,37 @@
         }
         
         ul li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+        
+        ul ul {
+            margin-top: 0.5rem;
+            padding-left: 2rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-category {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .skill-category p {
+            color: #555;
+            line-height: 1.6;
         }
         
         .contact-info {
@@ -107,17 +186,27 @@
             min-width: 250px;
         }
         
+        .contact-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
         .social-links {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
         
         .social-links a {
-            color: var(--secondary-color);
+            display: inline-block;
+            color: white;
+            background: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
             text-decoration: none;
+            transition: background 0.3s ease;
         }
         
         .social-links a:hover {
-            text-decoration: underline;
+            background: #2980b9;
         }
         
         @media (max-width: 768px) {
@@ -134,6 +223,14 @@
                 width: 150px;
                 height: 150px;
             }
+            
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -141,11 +238,12 @@
     <header>
         <div class="container">
             <div class="profile">
-               <img src="images/1230.jpg" alt="Yaoxing Wu" class="profile-image">
+                <img src="images/1230.jpg" alt="Yaoxing Wu" class="profile-image">
                 <div class="profile-info">
-                    <h1>Yaoxing Wu</h1>
-                    <p>Ph.D. Student</p>
+                    <h1>Yaoxing Wu (吴垚星)</h1>
+                    <p>Ph.D. Student in Ecology</p>
                     <p>Chinese Academy of Forestry & International Centre for Bamboo and Rattan</p>
+                    <p>📍 Beijing, China</p>
                 </div>
             </div>
         </div>
@@ -154,32 +252,32 @@
     <main class="container">
         <section id="about">
             <h2>About Me</h2>
-            <p>I am a Ph.D. student specializing in soil microbial ecology and global change ecology. My research focuses on understanding the interactions between soil microorganisms and environmental changes, particularly in the context of global climate change.</p>
+            <p>I am a Ph.D. student specializing in soil microbial ecology and global change ecology. My research explores plant-soil-microbe interactions under climate change, with emphasis on biodiversity conservation and ecosystem restoration. I integrate large-scale ecological patterns with microbial mechanisms to understand how soil communities respond to and shape environmental changes, contributing to sustainable ecosystem management.</p>
             <div class="social-links">
-                <p>Find me on: <a href="https://www.researchgate.net/profile/Yaoxing-Wu-4" target="_blank">ResearchGate</a></p>
+                <a href="https://www.researchgate.net/profile/Yaoxing-Wu-4" target="_blank">ResearchGate</a>
             </div>
         </section>
 
         <section id="education">
             <h2>Education</h2>
             <ul>
-                <li>Ph.D. Student, Chinese Academy of Forestry & International Centre for Bamboo and Rattan (2022-present)</li>
-                <li>M.Sc.,  Institute of Botany, Chinese Academy of Sciences & Inner Mongolia Agricultural University (2019-2022)</li>
-                <li>B.Sc. in Agriculture, Inner Mongolia Agricultural University (2015-2019)</li>
+                <li><strong>Ph.D. in Ecology</strong>, Chinese Academy of Forestry & International Centre for Bamboo and Rattan (2022-present)</li>
+                <li><strong>M.Sc. in Botany</strong>, Institute of Botany, Chinese Academy of Sciences & Inner Mongolia Agricultural University (2019-2022)</li>
+                <li><strong>B.Sc. in Landscape Architecture</strong>, Inner Mongolia Agricultural University (2015-2019)</li>
             </ul>
         </section>
 
         <section id="research">
             <h2>Research Interests</h2>
             <ul>
-                <li>Soil Microbial Ecology
+                <li><strong>Soil Microbial Ecology</strong>
                     <ul>
                         <li>Microbial community dynamics in soil ecosystems</li>
                         <li>Soil microbe-plant interactions</li>
                         <li>Microbial biodiversity and ecosystem functions</li>
                     </ul>
                 </li>
-                <li>Global Change Ecology
+                <li><strong>Global Change Ecology</strong>
                     <ul>
                         <li>Impact of climate change on soil microbial communities</li>
                         <li>Carbon and nitrogen cycling in terrestrial ecosystems</li>
@@ -189,18 +287,72 @@
             </ul>
         </section>
 
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Statistical Analysis</h3>
+                    <p>Meta-analysis, Mixed-effects models (LMM/GLMM), Bayesian statistics, SEM, Causal inference, Random Forest</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Multivariate Analysis</h3>
+                    <p>PCA, RDA, CCA, NMDS, PERMANOVA</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Microbiome Analysis</h3>
+                    <p>16S rRNA & ITS amplicon sequencing, Metagenomics</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Spatial Analysis</h3>
+                    <p>Spatial autocorrelation, Kriging, GWR</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <p>R (advanced), Python (intermediate), ArcGIS (intermediate)</p>
+                </div>
+            </div>
+        </section>
+
         <section id="publications">
             <h2>Publications</h2>
+            
             <div class="publication">
-                <p>Wu, Y., Guo, J., Tang, Z., Wang, T., Li, W., Wang, X., Cui, H., Hu, X., & Qi, L. (2024). Moso bamboo (Phyllostachys edulis) expansion enhances soil pH and alters soil nutrients and microbial communities. Science of The Total Environment, 912, 169346. https://doi.org/10.1016/j.scitotenv.2023.169346</p>
+                <p><span class="author-highlight">Wu, Y.</span>, Jia, Y., Liu, Q., Guo, J., Shen, Y., Yu, L., Zhang, G., Deng, J., Tian, H., & Qi, L. (2025). Bacterial and fungal communities exhibit contrasting assembly processes during native bamboo expansion through coupled vegetation-soil modifications across elevation gradients. <em>Global Ecology and Conservation</em>, 62, e03822.</p>
+                <a href="https://doi.org/10.1016/j.gecco.2025.e03822" target="_blank">https://doi.org/10.1016/j.gecco.2025.e03822</a>
+            </div>
+            
+            <div class="publication">
+                <p>Guo, J., Kneeshaw, D., Peng, C., <span class="author-highlight">Wu, Y.</span>, Feng, L., Qu, X., Wang, W., Pan, C., & Feng, H. (2025). Positive effects of species mixing on biodiversity of understory plant communities and soil health in forest plantations. <em>Proceedings of the National Academy of Sciences of the United States of America</em>, 122(11), e2418090122.</p>
+                <a href="https://doi.org/10.1073/pnas.2418090122" target="_blank">https://doi.org/10.1073/pnas.2418090122</a>
+            </div>
+            
+            <div class="publication">
+                <p><span class="author-highlight">Wu, Y.</span>, Guo, J., Tang, Z., Wang, T., Li, W., Wang, X., Cui, H., Hu, X., & Qi, L. (2024). Moso bamboo (Phyllostachys edulis) expansion enhances soil pH and alters soil nutrients and microbial communities. <em>Science of The Total Environment</em>, 912, 169346.</p>
+                <a href="https://doi.org/10.1016/j.scitotenv.2023.169346" target="_blank">https://doi.org/10.1016/j.scitotenv.2023.169346</a>
+            </div>
+            
+            <div class="publication">
+                <p>Yang, Y.†, <span class="author-highlight">Wu, Y.</span>†, Chen, Q., Liu, C., Liu, G., Cheng, S., & Wang, L. (2022). Potential spatiotemporal distribution changes and conservation recommendations of two connected endangered tree peony species (Paeonia decomposita & P. rotundiloba). <em>Flora</em>, 294, 152131.</p>
+                <p class="equal-contribution">† Equal contribution</p>
+                <a href="https://doi.org/10.1016/j.flora.2022.152131" target="_blank">https://doi.org/10.1016/j.flora.2022.152131</a>
+            </div>
+            
+            <div class="publication">
+                <p>Yang, Y., He, C., <span class="author-highlight">Wu, Y.</span>, Yu, X., Li, S., & Wang, L. (2022). Characterization of stilbenes, in vitro antioxidant and cellular anti-photoaging activities of seed coat extracts from 18 Paeonia species. <em>Industrial Crops and Products</em>, 177, 114530.</p>
+                <a href="https://doi.org/10.1016/j.indcrop.2022.114530" target="_blank">https://doi.org/10.1016/j.indcrop.2022.114530</a>
+            </div>
+            
+            <div class="publication">
+                <p><span class="author-highlight">Wu, Y.</span>, Yang, Y., Liu, C., Hou, Y., Yang, S., Wang, L., & Zhang, X. (2021). Potential suitable habitat of two economically important forest trees (Acer truncatum and Xanthoceras sorbifolium) in East Asia under current and future climate scenarios. <em>Forests</em>, 12(9), 1263.</p>
+                <a href="https://doi.org/10.3390/f12091263" target="_blank">https://doi.org/10.3390/f12091263</a>
             </div>
         </section>
 
         <section id="interests">
             <h2>Personal Interests</h2>
             <ul>
-                <li>Marathon Running</li>
-                <li>Photography</li>
+                <li>Marathon Running 🏃‍♂️</li>
+                <li>Photography 📷</li>
             </ul>
         </section>
 
@@ -209,12 +361,12 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <h3>Email</h3>
-                    <p>arcsin180@126.com</p>
+                    <p>📧 arcsin180@126.com</p>
                 </div>
                 <div class="contact-item">
                     <h3>Office</h3>
                     <p>Chinese Academy of Forestry</p>
-                    <p>International Bamboo and Rattan Centre</p>
+                    <p>International Centre for Bamboo and Rattan</p>
                     <p>Beijing, China</p>
                 </div>
             </div>
