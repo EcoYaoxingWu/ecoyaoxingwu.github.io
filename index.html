@@ -153,12 +153,13 @@
         
         .skills-grid {
             display: grid;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
             margin-top: 1rem;
         }
         
         .skill-category {
-            padding: 1rem;
+            padding: 0.8rem;
             background: #f8f9fa;
             border-radius: 6px;
             border-left: 3px solid var(--accent-color);
@@ -166,13 +167,107 @@
         
         .skill-category h3 {
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+            font-weight: 600;
         }
         
         .skill-category p {
             color: #555;
-            line-height: 1.6;
+            line-height: 1.4;
+            font-size: 0.95rem;
+        }
+        
+        .photo-gallery {
+            margin-top: 1.5rem;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: #f0f0f0;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .photo-item:hover .photo-caption {
+            opacity: 1;
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            cursor: pointer;
+        }
+        
+        .lightbox img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .lightbox-close:hover {
+            color: #bbb;
         }
         
         .contact-info {
@@ -231,6 +326,15 @@
             section {
                 padding: 1.5rem;
             }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -240,7 +344,7 @@
             <div class="profile">
                 <img src="images/1230.jpg" alt="Yaoxing Wu" class="profile-image">
                 <div class="profile-info">
-                    <h1>Yaoxing Wu (吴垚星)</h1>
+                    <h1>Yaoxing Wu (武耀星)</h1>
                     <p>Ph.D. Student in Ecology</p>
                     <p>Chinese Academy of Forestry & International Centre for Bamboo and Rattan</p>
                     <p>📍 Beijing, China</p>
@@ -327,23 +431,23 @@
             </div>
             
             <div class="publication">
-                <p><span class="author-highlight">Wu, Y.</span>, Guo, J., Tang, Z., Wang, T., Li, W., Wang, X., Cui, H., Hu, X., & Qi, L. (2024). Moso bamboo (Phyllostachys edulis) expansion enhances soil pH and alters soil nutrients and microbial communities. <em>Science of The Total Environment</em>, 912, 169346.</p>
+                <p><span class="author-highlight">Wu, Y.</span>, Guo, J., Tang, Z., Wang, T., Li, W., Wang, X., Cui, H., Hu, X., & Qi, L. (2024). Moso bamboo (<em>Phyllostachys edulis</em>) expansion enhances soil pH and alters soil nutrients and microbial communities. <em>Science of The Total Environment</em>, 912, 169346.</p>
                 <a href="https://doi.org/10.1016/j.scitotenv.2023.169346" target="_blank">https://doi.org/10.1016/j.scitotenv.2023.169346</a>
             </div>
             
             <div class="publication">
-                <p>Yang, Y.†, <span class="author-highlight">Wu, Y.</span>†, Chen, Q., Liu, C., Liu, G., Cheng, S., & Wang, L. (2022). Potential spatiotemporal distribution changes and conservation recommendations of two connected endangered tree peony species (Paeonia decomposita & P. rotundiloba). <em>Flora</em>, 294, 152131.</p>
+                <p>Yang, Y.†, <span class="author-highlight">Wu, Y.</span>†, Chen, Q., Liu, C., Liu, G., Cheng, S., & Wang, L. (2022). Potential spatiotemporal distribution changes and conservation recommendations of two connected endangered tree peony species (<em>Paeonia decomposita</em> & <em>P. rotundiloba</em>). <em>Flora</em>, 294, 152131.</p>
                 <p class="equal-contribution">† Equal contribution</p>
                 <a href="https://doi.org/10.1016/j.flora.2022.152131" target="_blank">https://doi.org/10.1016/j.flora.2022.152131</a>
             </div>
             
             <div class="publication">
-                <p>Yang, Y., He, C., <span class="author-highlight">Wu, Y.</span>, Yu, X., Li, S., & Wang, L. (2022). Characterization of stilbenes, in vitro antioxidant and cellular anti-photoaging activities of seed coat extracts from 18 Paeonia species. <em>Industrial Crops and Products</em>, 177, 114530.</p>
+                <p>Yang, Y., He, C., <span class="author-highlight">Wu, Y.</span>, Yu, X., Li, S., & Wang, L. (2022). Characterization of stilbenes, in vitro antioxidant and cellular anti-photoaging activities of seed coat extracts from 18 <em>Paeonia</em> species. <em>Industrial Crops and Products</em>, 177, 114530.</p>
                 <a href="https://doi.org/10.1016/j.indcrop.2022.114530" target="_blank">https://doi.org/10.1016/j.indcrop.2022.114530</a>
             </div>
             
             <div class="publication">
-                <p><span class="author-highlight">Wu, Y.</span>, Yang, Y., Liu, C., Hou, Y., Yang, S., Wang, L., & Zhang, X. (2021). Potential suitable habitat of two economically important forest trees (Acer truncatum and Xanthoceras sorbifolium) in East Asia under current and future climate scenarios. <em>Forests</em>, 12(9), 1263.</p>
+                <p><span class="author-highlight">Wu, Y.</span>, Yang, Y., Liu, C., Hou, Y., Yang, S., Wang, L., & Zhang, X. (2021). Potential suitable habitat of two economically important forest trees (<em>Acer truncatum</em> and <em>Xanthoceras sorbifolium</em>) in East Asia under current and future climate scenarios. <em>Forests</em>, 12(9), 1263.</p>
                 <a href="https://doi.org/10.3390/f12091263" target="_blank">https://doi.org/10.3390/f12091263</a>
             </div>
         </section>
@@ -351,10 +455,77 @@
         <section id="interests">
             <h2>Personal Interests</h2>
             <ul>
-                <li>Marathon Running 🏃‍♂️</li>
-                <li>Photography 📷</li>
+                <li><strong>Marathon Running</strong> 🏃‍♂️</li>
+                <li><strong>Swimming</strong> 🏊‍♂️</li>
+                <li><strong>Photography</strong> 📷</li>
             </ul>
+            
+            <div class="photo-gallery">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">My Photography Works</h3>
+                <div class="photo-grid">
+                    <div class="photo-item" onclick="openLightbox('images/photo1.jpg')">
+                        <img src="images/photo1.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo2.jpg')">
+                        <img src="images/photo2.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo3.jpg')">
+                        <img src="images/photo3.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo4.jpg')">
+                        <img src="images/photo4.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo5.jpg')">
+                        <img src="images/photo5.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo6.jpg')">
+                        <img src="images/photo6.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo7.jpg')">
+                        <img src="images/photo7.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo8.jpg')">
+                        <img src="images/photo8.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo10.jpg')">
+                        <img src="images/photo10.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo11.jpg')">
+                        <img src="images/photo11.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo12.jpg')">
+                        <img src="images/photo12.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo13.jpg')">
+                        <img src="images/photo13.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo14.jpg')">
+                        <img src="images/photo14.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo15.jpg')">
+                        <img src="images/photo15.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo16.jpg')">
+                        <img src="images/photo16.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo17.jpg')">
+                        <img src="images/photo17.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo18.jpg')">
+                        <img src="images/photo18.jpg" alt="Photography">
+                    </div>
+                    <div class="photo-item" onclick="openLightbox('images/photo19.jpg')">
+                        <img src="images/photo19.jpg" alt="Photography">
+                    </div>
+                </div>
+            </div>
         </section>
+        
+        <!-- Lightbox for full-size photo viewing -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-img" src="" alt="Full size photo">
+        </div>
 
         <section id="contact">
             <h2>Contact Information</h2>
@@ -372,5 +543,25 @@
             </div>
         </section>
     </main>
+    
+    <script>
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
