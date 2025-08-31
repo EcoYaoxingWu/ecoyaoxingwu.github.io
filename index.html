@@ -34,11 +34,33 @@
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: white;
             padding: 3rem 0;
             margin-bottom: 2rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* 添加半透明遮罩层以确保文字清晰可读 */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 62, 80, 0.7);
+            z-index: 1;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 2;
         }
         
         .profile {
@@ -61,12 +83,14 @@
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         .profile-info p {
             font-size: 1.1rem;
             opacity: 0.95;
             margin-bottom: 0.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
         section {
@@ -334,6 +358,10 @@
             .photo-grid {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
                 gap: 0.5rem;
+            }
+            
+            header {
+                background-attachment: scroll;
             }
         }
     </style>
