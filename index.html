@@ -328,6 +328,57 @@
             background: #2980b9;
         }
         
+        .gallery-toggle {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, var(--secondary-color), #5dade2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .gallery-toggle:hover {
+            background: linear-gradient(135deg, #2980b9, var(--secondary-color));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+        }
+        
+        .gallery-toggle::before {
+            content: "📸 ";
+            margin-right: 0.2rem;
+        }
+        
+        .gallery-toggle.field-toggle::before {
+            content: "🔬 ";
+        }
+        
+        .gallery-container {
+            display: none;
+            margin-top: 1rem;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .gallery-container.active {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -448,6 +499,11 @@
         <section id="publications">
             <h2>Publications</h2>
             
+            <div class="publication" style="border-left-color: #e74c3c;">
+                <p><strong>[Under Review]</strong> <span class="author-highlight">Wu, Y.</span>, Tian, H., Guo, J., Shen, Y., Liu, Q., Yu, L., Tang, Z., Jia, Y., Zhang, G., Deng, J., & Qi, L. Soil calcium ion enrichment associated with altered microbial functional gene networks in bamboo forest expansion. <em>Applied Soil Ecology</em> (submitted).</p>
+                <p class="equal-contribution">Manuscript submitted for peer review</p>
+            </div>
+            
             <div class="publication">
                 <p><span class="author-highlight">Wu, Y.</span>, Jia, Y., Liu, Q., Guo, J., Shen, Y., Yu, L., Zhang, G., Deng, J., Tian, H., & Qi, L. (2025). Bacterial and fungal communities exhibit contrasting assembly processes during native bamboo expansion through coupled vegetation-soil modifications across elevation gradients. <em>Global Ecology and Conservation</em>, 62, e03822.</p>
                 <a href="https://doi.org/10.1016/j.gecco.2025.e03822" target="_blank">https://doi.org/10.1016/j.gecco.2025.e03822</a>
@@ -472,6 +528,11 @@
             <div class="publication">
                 <p>Yang, Y., He, C., <span class="author-highlight">Wu, Y.</span>, Yu, X., Li, S., & Wang, L. (2022). Characterization of stilbenes, in vitro antioxidant and cellular anti-photoaging activities of seed coat extracts from 18 <em>Paeonia</em> species. <em>Industrial Crops and Products</em>, 177, 114530.</p>
                 <a href="https://doi.org/10.1016/j.indcrop.2022.114530" target="_blank">https://doi.org/10.1016/j.indcrop.2022.114530</a>
+            </div>
+            
+            <div class="publication">
+                <p><span class="author-highlight">Wu, Y.</span>, Zhang, M., Yang, Y., Lv, Z., Zhang, X., & Wang, L. (2022). Effects of climate changes on the distribution of <em>Osmanthus fragrans</em>. <em>Journal of Northwest Forestry University</em>, 37(4), 129-134.</p>
+                <a href="https://doi.org/10.3969/j.issn.1001-7461.2022.04.17" target="_blank">https://doi.org/10.3969/j.issn.1001-7461.2022.04.17</a>
             </div>
             
             <div class="publication">
@@ -504,24 +565,27 @@
             
             <div class="photo-gallery">
                 <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Research Activities</h3>
-                <div class="photo-grid">
-                    <div class="photo-item" onclick="openLightbox('images/field1.jpg')">
-                        <img src="images/field1.jpg" alt="Field Work">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/field2.jpg')">
-                        <img src="images/field2.jpg" alt="Field Work">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/field3.jpg')">
-                        <img src="images/field3.jpg" alt="Field Work">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/field4.jpg')">
-                        <img src="images/field4.jpg" alt="Field Work">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/field5.jpg')">
-                        <img src="images/field5.jpg" alt="Field Work">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/field6.jpg')">
-                        <img src="images/field6.jpg" alt="Field Work">
+                <button class="gallery-toggle field-toggle" onclick="toggleGallery('field-gallery')">Explore Field Adventures</button>
+                <div id="field-gallery" class="gallery-container">
+                    <div class="photo-grid">
+                        <div class="photo-item" onclick="openLightbox('images/field1.jpg')">
+                            <img src="images/field1.jpg" alt="Field Work">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/field2.jpg')">
+                            <img src="images/field2.jpg" alt="Field Work">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/field3.jpg')">
+                            <img src="images/field3.jpg" alt="Field Work">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/field4.jpg')">
+                            <img src="images/field4.jpg" alt="Field Work">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/field5.jpg')">
+                            <img src="images/field5.jpg" alt="Field Work">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/field6.jpg')">
+                            <img src="images/field6.jpg" alt="Field Work">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -537,60 +601,63 @@
             
             <div class="photo-gallery">
                 <h3 style="color: var(--primary-color); margin-bottom: 1rem;">My Photography Works</h3>
-                <div class="photo-grid">
-                    <div class="photo-item" onclick="openLightbox('images/photo1.jpg')">
-                        <img src="images/photo1.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo2.jpg')">
-                        <img src="images/photo2.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo3.jpg')">
-                        <img src="images/photo3.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo4.jpg')">
-                        <img src="images/photo4.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo5.jpg')">
-                        <img src="images/photo5.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo6.jpg')">
-                        <img src="images/photo6.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo7.jpg')">
-                        <img src="images/photo7.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo8.jpg')">
-                        <img src="images/photo8.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo10.jpg')">
-                        <img src="images/photo10.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo11.jpg')">
-                        <img src="images/photo11.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo12.jpg')">
-                        <img src="images/photo12.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo13.jpg')">
-                        <img src="images/photo13.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo14.jpg')">
-                        <img src="images/photo14.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo15.jpg')">
-                        <img src="images/photo15.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo16.jpg')">
-                        <img src="images/photo16.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo17.jpg')">
-                        <img src="images/photo17.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo18.jpg')">
-                        <img src="images/photo18.jpg" alt="Photography">
-                    </div>
-                    <div class="photo-item" onclick="openLightbox('images/photo19.jpg')">
-                        <img src="images/photo19.jpg" alt="Photography">
+                <button class="gallery-toggle" onclick="toggleGallery('photo-gallery')">Discover My Visual Journey</button>
+                <div id="photo-gallery" class="gallery-container">
+                    <div class="photo-grid">
+                        <div class="photo-item" onclick="openLightbox('images/photo1.jpg')">
+                            <img src="images/photo1.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo2.jpg')">
+                            <img src="images/photo2.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo3.jpg')">
+                            <img src="images/photo3.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo4.jpg')">
+                            <img src="images/photo4.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo5.jpg')">
+                            <img src="images/photo5.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo6.jpg')">
+                            <img src="images/photo6.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo7.jpg')">
+                            <img src="images/photo7.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo8.jpg')">
+                            <img src="images/photo8.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo10.jpg')">
+                            <img src="images/photo10.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo11.jpg')">
+                            <img src="images/photo11.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo12.jpg')">
+                            <img src="images/photo12.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo13.jpg')">
+                            <img src="images/photo13.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo14.jpg')">
+                            <img src="images/photo14.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo15.jpg')">
+                            <img src="images/photo15.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo16.jpg')">
+                            <img src="images/photo16.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo17.jpg')">
+                            <img src="images/photo17.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo18.jpg')">
+                            <img src="images/photo18.jpg" alt="Photography">
+                        </div>
+                        <div class="photo-item" onclick="openLightbox('images/photo19.jpg')">
+                            <img src="images/photo19.jpg" alt="Photography">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -629,6 +696,27 @@
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
             document.body.style.overflow = 'auto';
+        }
+        
+        function toggleGallery(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            const button = gallery.previousElementSibling;
+            
+            if (gallery.classList.contains('active')) {
+                gallery.classList.remove('active');
+                if (galleryId === 'field-gallery') {
+                    button.innerHTML = '🔬 Explore Field Adventures';
+                } else {
+                    button.innerHTML = '📸 Discover My Visual Journey';
+                }
+            } else {
+                gallery.classList.add('active');
+                if (galleryId === 'field-gallery') {
+                    button.innerHTML = '🔬 Hide Field Photos';
+                } else {
+                    button.innerHTML = '📸 Hide Gallery';
+                }
+            }
         }
         
         // Close lightbox with ESC key
